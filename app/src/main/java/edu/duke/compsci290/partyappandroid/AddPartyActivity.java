@@ -27,6 +27,8 @@ public class AddPartyActivity extends AppCompatActivity {
     private Button mEndDateButton;
     private TextView mStartDateText;
     private TextView mEndDateText;
+    private Button mSubmitButton;
+    private Button mCancelButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +37,8 @@ public class AddPartyActivity extends AppCompatActivity {
         mStartDateButton = findViewById(R.id.choose_start_date_button);
         mEndTimeButton = findViewById(R.id.choose_end_time_button);
         mEndDateButton = findViewById(R.id.choose_end_date_button);
-
+        mSubmitButton = findViewById(R.id.new_party_submit_button);
+        mCancelButton = findViewById(R.id.new_party_cancel_button);
         mStartDateText = findViewById(R.id.start_date_text);
         mEndDateText = findViewById(R.id.end_date_text);
         Calendar myCal = Calendar.getInstance();
@@ -64,6 +67,18 @@ public class AddPartyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setEndDate();
+            }
+        });
+        mSubmitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onSubmit();
+            }
+        });
+        mCancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                cancel();
             }
         });
     }
@@ -199,6 +214,16 @@ public class AddPartyActivity extends AppCompatActivity {
         public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
             // Do something with the time chosen by the user
         }
+    }
+
+    private void onSubmit(){
+        //Hit the database
+
+        //On Success
+        finish();
+    }
+    private void cancel(){
+        finish();
     }
 
 
